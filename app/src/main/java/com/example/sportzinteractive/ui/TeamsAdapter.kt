@@ -1,10 +1,13 @@
 package com.example.sportzinteractive.ui
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +15,7 @@ import com.example.sportzinteractive.R
 import com.example.sportzinteractive.network.model.PlayerDetail
 import com.example.sportzinteractive.network.model.Team
 import java.util.*
+
 
 class TeamsAdapter(private val context: Context, private var data: ArrayList<Team>) :
     RecyclerView.Adapter<TeamsAdapter.TeamViewHolder>() {

@@ -10,4 +10,8 @@
     <string name="header">Header</string>
     <string name="captainandkeeper">(%s &amp; %s)</string>
     <string name="captainorkeeper">(%s)</string>
+    <string name="ok">OK</string>
+    <string name="battingnbowlingstyle">Batting Style: %s \nBowling Style: %s</string>
+    <string name="playername">PlayerName</string>
+    <string name="batting">Batting</string>
 </resources>

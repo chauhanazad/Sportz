@@ -1,11 +1,15 @@
 package com.example.sportzinteractive.ui
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sportzinteractive.R
 import com.example.sportzinteractive.network.model.PlayerDetail
@@ -17,6 +21,29 @@ class PlayerAdapter (private val context: Context, private var data: ArrayList<P
     {
         val playerName: TextView = itemView.findViewById(R.id.playerName)
         val playerStatus: TextView = itemView.findViewById(R.id.playerStatus)
+        private val playerContainer: ConstraintLayout = itemView.findViewById(R.id.playerContainer)
+        init {
+            playerContainer.setOnClickListener {
+                val dialog = Dialog(context)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.setCancelable(false)
+                dialog.setContentView(R.layout.dialog)
+
+                val playerName = dialog.findViewById<View>(R.id.playerName) as TextView
+                playerName.setText(data[adapterPosition].NameFull)
+                val playerStyle = dialog.findViewById<View>(R.id.playerDetails) as TextView
+                playerStyle.setText(context.getString(R.string.battingnbowlingstyle,
+                    if (data[adapterPosition].Batting?.Style == "") "N/A" else data[adapterPosition].Batting?.Style,
+                    if (data[adapterPosition].Bowling?.Style == "") "N/A" else data[adapterPosition].Bowling?.Style
+                ))
+
+                val dialogButton: Button = dialog.findViewById<View>(R.id.btn_dialog) as Button
+                dialogButton.setOnClickListener(View.OnClickListener { dialog.dismiss() })
+
+                dialog.show()
+//                onClick.invoke(adapterPosition,data[adapterPosition])
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {

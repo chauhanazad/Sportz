@@ -9,6 +9,6 @@ import retrofit2.http.GET
 
 interface ClientApi {
 
-    @GET(WebConstants.API1)
+    @GET(WebConstants.API2)
     fun getMatchData(): Single<ResponseData>
 }
